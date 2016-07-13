@@ -4,17 +4,10 @@ Date: June 25, 2016
 Finished: July 12, 2016
 Version 1
 
-This program will allow players to play tictactoe using a GUI interface using
-the pygame library.
+This program will allow players to play tictactoe using a GUI interface 
 
 pygame library - www.wpygame.org
 '''
-
-'''import pygame
-
-class Marker(object):
-    def __init__(self, marker_type):
-        self.marker_type = marker_type'''
         
 from tkinter import *
 import tkinter.messagebox
