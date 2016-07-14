@@ -1,12 +1,10 @@
 '''
 Name: Gregori Jenkins
 Date: June 25, 2016
-Finished: July 12, 2016
-Version 1
+Finished: July 13, 2016
+Version 1.01
 
-This program will allow players to play tictactoe using a GUI interface 
-
-pygame library - www.wpygame.org
+This program will allow players to play tictactoe using a TKGUI interface 
 '''
         
 from tkinter import *
@@ -18,7 +16,7 @@ tk = Tk()
 #current_turn = "x"
 player = 0
 start = 0
-board_token = ["9","9","9","9","9","9","9","9","9"]
+board_token = [9,9,9,9,9,9,9,9,9]
 position_x_dict = {"0":[0,0,100,100,100,0,0,100], "1":[100,0,200,100,200,0,100,100], 
 "2":[200,0,300,100,300,0,200,100], "3":[0,100,100,200,100,100,0,200], 
 "4":[100,100,200,200,200,100,100,200], "5":[200,100,300,200,300,100,200,200],
@@ -39,13 +37,13 @@ def draw_x_mark(x_dict, position):
     if test_occupied_space(position):
         canvas.create_line(x_dict[position][0], x_dict[position][1], x_dict[position][2], x_dict[position][3])
         canvas.create_line(x_dict[position][4], x_dict[position][5], x_dict[position][6], x_dict[position][7])
-        board_token[int(position)] = "0"
+        board_token[int(position)] = 0
 def draw_o_mark(o_dict, position):
     #position is one of the boxes in string format. top-left is "0"
     #while the bottom right will be "8"
     if test_occupied_space(position):
         canvas.create_oval(o_dict[position][0], o_dict[position][1], o_dict[position][2], o_dict[position][3])
-        board_token[int(position)] = "1"
+        board_token[int(position)] = 1
 def draw_board():
     #global start
     #Create the board in a tk window
@@ -90,52 +88,52 @@ def test_for_winner():
     #function simply tests for the eight conditions of winning 
     #by having three symbols in a row or tests for a draw
     #Check for winning xs top-across
-    if board_token[0] == "0" and board_token[1] == "0" and board_token[2] == "0": 
+    if board_token[0] == 0 and board_token[1] == 0 and board_token[2] == 0: 
         return 0
     #Check for winning xs middle-across
-    elif board_token[3] == "0" and board_token[4] == "0" and board_token[5] == "0": 
+    elif board_token[3] == 0 and board_token[4] == 0 and board_token[5] == 0: 
         return 0
     #Check for winning xs bottom-across
-    elif board_token[6] == "0" and board_token[7] == "0" and board_token[8] == "0": 
+    elif board_token[6] == 0 and board_token[7] == 0 and board_token[8] == 0: 
         return 0
     #Check for winning xs right-down
-    elif board_token[0] == "0" and board_token[3] == "0" and board_token[6] == "0": 
+    elif board_token[0] == 0 and board_token[3] == 0 and board_token[6] == 0: 
         return 0
     #Check for winning xs middle-down
-    elif board_token[1] == "0" and board_token[4] == "0" and board_token[7] == "0": 
+    elif board_token[1] == 0 and board_token[4] == 0 and board_token[7] == 0: 
         return 0
     #Check for winning xs left-down
-    elif board_token[2] == "0" and board_token[5] == "0" and board_token[8] == "0": 
+    elif board_token[2] == 0 and board_token[5] == 0 and board_token[8] == 0: 
         return 0
     #Check for winning xs top-left to bottom-right diagnally
-    elif board_token[0] == "0" and board_token[4] == "0" and board_token[8] == "0": 
+    elif board_token[0] == 0 and board_token[4] == 0 and board_token[8] == 0: 
         return 0
     #Check for winning xs top-right to bottom-left diagnally
-    elif board_token[6] == "0" and board_token[4] == "0" and board_token[2] == "0": 
+    elif board_token[6] == 0 and board_token[4] == 0 and board_token[2] == 0: 
         return 0
     #Check for winning ys middle-across
-    elif board_token[3] == "1" and board_token[4] == "1" and board_token[5] == "1": 
+    elif board_token[3] == 1 and board_token[4] == 1 and board_token[5] == 1: 
         return 1
     #Check for winning ys bottom-across
-    elif board_token[6] == "1" and board_token[7] == "1" and board_token[8] == "1": 
+    elif board_token[6] == 1 and board_token[7] == 1 and board_token[8] == 1: 
         return 1
     #Check for winning ys right-down
-    elif board_token[0] == "1" and board_token[3] == "1" and board_token[6] == "1": 
+    elif board_token[0] == 1 and board_token[3] == 1 and board_token[6] == 1: 
         return 1
     #Check for winning ys middle-down
-    elif board_token[1] == "1" and board_token[4] == "1" and board_token[7] == "1": 
+    elif board_token[1] == 1 and board_token[4] == 1 and board_token[7] == 1: 
         return 1
     #Check for winning ys left-down
-    elif board_token[2] == "1" and board_token[5] == "1" and board_token[8] == "1": 
+    elif board_token[2] == 1 and board_token[5] == 1 and board_token[8] == 1: 
         return 1
     #Check for winning ys top-left to bottom-right diagnally
-    elif board_token[0] == "1" and board_token[4] == "1" and board_token[8] == "1": 
+    elif board_token[0] == 1 and board_token[4] == 1 and board_token[8] == 1: 
         return 1
     #Check for winning ys top-right to bottom-left diagnally
-    elif board_token[6] == "1" and board_token[4] == "1" and board_token[2] == "1": 
+    elif board_token[6] == 1 and board_token[4] == 1 and board_token[2] == 1: 
         return 1
     #Check for winning ys top-across
-    elif board_token[0] == "1" and board_token[1] == "1" and board_token[2] == "1": 
+    elif board_token[0] == 1 and board_token[1] == 1 and board_token[2] == 1: 
         return 1
     else:
         return 3
@@ -145,12 +143,12 @@ def clear_board():
     #clears the board so that a new game can be started.
     global board_token
     canvas.delete("all")
-    board_token = ["9","9","9","9","9","9","9","9","9"]
+    board_token = [9,9,9,9,9,9,9,9,9]
     draw_board()
-def display_instructions():
+'''def display_instructions():
     #will display instructions in a new window
     instructions = "The object of Tic Tac Toe is to get three in a row. You play on a three by three game board. The first player is known as X and the second is O. Players alternate placing Xs and Os on the game board until either oppent has three in a row or all nine squares are filled. --web.cecs.pdx.edu/~bart/cs541-fall2001/homework/tictactoe-rules.html"
-    tkinter.messagebox.showinfo("Instructions", instructions)
+    tkinter.messagebox.showinfo("Instructions", instructions)'''
 def display_winner(winner):
     #creates popup message declaring the winner
     tkinter.messagebox.showinfo("Winner", "The winner is " + winner)
